@@ -1,0 +1,17 @@
+.newCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--main-color);
+  font-size: 36px;
+  cursor: pointer;
+  width: 100%;
+  min-height: 90px;
+  border-radius: 16px;
+  color: var(--main-color);
+  transition: background 0.1s;
+}
+
+.newCard:hover {
+  background: var(--main-bg);
+}

@@ -1,0 +1,13 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  height: calc(100% - 51px);
+  padding: 24px;
+}
+
+.submit {
+  display: flex;
+  gap: 8px;
+}

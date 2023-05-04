@@ -1,0 +1,39 @@
+.menu {
+  min-width: 300px;
+  max-width: 300px;
+  border-right: 1px solid rgba(35, 35, 35, 0.1);
+  height: 100%;
+  order: 0;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  color: var(--main-color);
+  font-size: 28px;
+  font-weight: 500;
+  height: 51px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 8px;
+  width: 100%;
+  padding: 16px;
+  max-height: calc(100% - 67px);
+  overflow-y: scroll;
+}
+
+.wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 570px) {
+  .menu {
+    order: 1;
+    min-width: unset;
+  }
+}

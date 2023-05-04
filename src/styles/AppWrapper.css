@@ -1,0 +1,18 @@
+.right-content {
+  width: 100%;
+  order: 1;
+}
+
+@media (max-width: 570px) {
+  .right-content {
+    order: 0;
+  }
+
+  .isEdit {
+    display: none;
+  }
+
+  .isEdit + .right-content {
+    height: 100%;
+  }
+}

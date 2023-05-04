@@ -1,0 +1,16 @@
+.btn {
+  width: 100%;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.4);
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

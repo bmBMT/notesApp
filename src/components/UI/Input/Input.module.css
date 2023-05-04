@@ -1,0 +1,15 @@
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  border-radius: 8px;
+  padding: 8px;
+  border: none;
+  outline: none;
+}
+
+input:focus {
+  outline: 1px solid var(--main-color);
+}
