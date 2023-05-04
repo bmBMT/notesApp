@@ -21,14 +21,14 @@ const EditData = ({ type, datas, setDatas, editId, setEditId }) => {
 
   const cancel = useCallback(() => setEditId(null), []);
 
-  const saveData = useCallback(() => {
+  const saveData = () => {
     if (isDataInArr(datas, editId)) {
       setDatas(datas.map((data) => (data.id === editId ? tempData : data)));
     } else {
       setDatas([...datas, tempData]);
     }
     setEditId(null);
-  }, []);
+  };
 
   return (
     <div className={styles.wrapper}>
