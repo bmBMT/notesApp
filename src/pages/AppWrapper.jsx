@@ -5,19 +5,11 @@ import NewCard from "../components/NewCard";
 import DataList from "../components/DataList";
 import "../styles/AppWrapper.css";
 import EditData from "../components/EditData";
-import uuid from "react-uuid";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const AppWrapper = ({ type }) => {
   const [editId, setEditId] = useState(null);
-
-  const [datas, setDatas] = useState(() => {
-    const storedDatas = localStorage.getItem(type);
-    return storedDatas ? JSON.parse(storedDatas) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem(type, JSON.stringify(datas));
-  }, [datas]);
+  const [datas, setDatas] = useLocalStorage(type, []);
 
   return (
     <main>
