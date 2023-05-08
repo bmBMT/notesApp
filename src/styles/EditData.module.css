@@ -11,3 +11,12 @@
   display: flex;
   gap: 8px;
 }
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+#textarea {
+  height: 100%;
+}

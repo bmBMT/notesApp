@@ -4,6 +4,7 @@ import styles from "../styles/EditData.module.css";
 import Textarea from "./UI/Textarea/Textarea";
 import Button from "./UI/Button/Button";
 import { getNewData, isDataInArr } from "../utils/data";
+import Label from "./UI/Label/Label";
 
 const EditData = ({ type, datas, setDatas, editId, setEditId }) => {
   const [tempData, setTempData] = useState({});
@@ -28,22 +29,30 @@ const EditData = ({ type, datas, setDatas, editId, setEditId }) => {
       setDatas([...datas, tempData]);
     }
     setEditId(null);
-  };
+  }
 
   return (
     <div className={styles.wrapper}>
       {"title" in tempData && (
-        <Input
-          value={tempData.title}
-          onChange={(e) => onChange(e, "title")}
-          title={"Title"}
-        />
+        <div className={styles.column}>
+          <Label htmlFor={"title"}>Title:</Label>
+          <Input
+            value={tempData.title}
+            id={"title"}
+            onChange={(e) => onChange(e, "title")}
+            title={"Title"}
+          />
+        </div>
       )}
-      <Textarea
-        value={tempData.text}
-        onChange={(e) => onChange(e, "text")}
-        title={"Text"}
-      />
+      <div className={styles.column} id={styles.textarea}>
+        <Label htmlFor={"text"}>Text:</Label>
+        <Textarea
+          value={tempData.text}
+          id={"text"}
+          onChange={(e) => onChange(e, "text")}
+          title={"Text"}
+        />
+      </div>
       <div className={styles.submit}>
         <Button onClick={cancel}>cancel</Button>
         <Button onClick={saveData}>save</Button>

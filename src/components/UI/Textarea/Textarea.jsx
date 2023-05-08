@@ -1,14 +1,8 @@
-import React from "react";
-import Label from "../Label/Label";
-import styles from "./Textarea.module.css";
+import React, { memo } from "react";
+import "./Textarea.module.css";
 
-const Textarea = ({ title, ...props }) => {
-  return (
-    <div className={styles.textarea}>
-      <Label str={title} />
-      <textarea {...props} id={title} className="blur-bg" />
-    </div>
-  );
+const Textarea = ({ ...props }) => {
+  return <textarea {...props} className="blur-bg" />;
 };
 
-export default Textarea;
+export default memo(Textarea);
