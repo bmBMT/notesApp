@@ -17,22 +17,35 @@
   transform: rotateZ(-20deg);
 }
 
-.perfomance:hover {
+.perfomance:hover,
+.perfomance:active {
   width: 100%;
 }
 
 @media (max-width: 800px) {
   .perfomance {
-    width: 85%;
+    width: 90%;
+    height: 50%;
   }
   .perfomance > img {
-    width: 25%;
+    width: 35%;
   }
 }
 
+
 @media (max-width: 470px) {
   .perfomance > img {
-    width: 35%;
+    width: 50%;
+  }
+}
+
+@media (max-height: 600px) {
+  .perfomance {
+    flex-direction: row;
+  }
+  .perfomance > img {
+    width: unset;
+    height: 80%;
   }
 }
 
