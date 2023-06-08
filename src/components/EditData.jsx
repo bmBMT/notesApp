@@ -1,45 +1,55 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Input from "./UI/Input/Input";
 import styles from "../styles/EditData.module.css";
 import Textarea from "./UI/Textarea/Textarea";
 import Button from "./UI/Button/Button";
-import { getNewData, isDataInArr } from "../utils/data";
+import { isDataInArr } from "../utils/data";
 import Label from "./UI/Label/Label";
+import uuid from "react-uuid";
 
 const EditData = ({ type, datas, setDatas, editId, setEditId }) => {
-  const [tempData, setTempData] = useState({});
+  const titleRef = useRef();
+  const textRef = useRef();
+  const [initialTitle, setInitialTitle] = useState("");
+  const [initialText, setInitialText] = useState("");
+
   useEffect(() => {
     if (isDataInArr(datas, editId)) {
-      setTempData(datas.filter((data) => data.id === editId)[0]);
-    } else {
-      return setTempData(getNewData(type));
+      const updatingTodo = datas.filter((data) => data.id === editId)[0];
+      setInitialTitle(updatingTodo.title);
+      setInitialText(updatingTodo.text);
     }
   }, [editId]);
 
-  function onChange(e, params) {
-    setTempData({ ...tempData, [params]: e.target.value });
-  }
-
-  const cancel = useCallback(() => setEditId(null), []);
+  const cancel = () => setEditId(null);
 
   const saveData = () => {
+    const newTodo =
+      type === "Notes"
+        ? {
+            id: uuid(),
+            title: titleRef.current.value,
+            text: textRef.current.value,
+          }
+        : { id: uuid(), text: textRef.current.value };
+
     if (isDataInArr(datas, editId)) {
-      setDatas(datas.map((data) => (data.id === editId ? tempData : data)));
+      setDatas(datas.map((data) => (data.id === editId ? newTodo : data)));
     } else {
-      setDatas([...datas, tempData]);
+      setDatas([...datas, newTodo]);
     }
     setEditId(null);
-  }
+  };
 
   return (
     <div className={styles.wrapper}>
-      {"title" in tempData && (
+      {type === "Notes" && (
         <div className={styles.column}>
           <Label htmlFor={"title"}>Title:</Label>
           <Input
-            value={tempData.title}
+            ref={titleRef}
+            defaultValue={initialTitle}
             id={"title"}
-            onChange={(e) => onChange(e, "title")}
             title={"Title"}
           />
         </div>
@@ -47,9 +57,9 @@ const EditData = ({ type, datas, setDatas, editId, setEditId }) => {
       <div className={styles.column} id={styles.textarea}>
         <Label htmlFor={"text"}>Text:</Label>
         <Textarea
-          value={tempData.text}
+          ref={textRef}
+          defaultValue={initialText}
           id={"text"}
-          onChange={(e) => onChange(e, "text")}
           title={"Text"}
         />
       </div>

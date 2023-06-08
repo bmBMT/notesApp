@@ -1,9 +1,8 @@
-import React, { memo, useMemo } from "react";
-import styles from "./Input.module.css";
-import Label from "../Label/Label";
+import { forwardRef, memo } from "react";
+import "./Input.css";
 
-const Input = ({ ...props }) => {
-  return <input {...props} type="text" className="blur-bg" />;
-};
+const Input = forwardRef((props, ref) => {
+  return <input {...props} ref={ref} type="text" className="blur-bg" />;
+});
 
 export default memo(Input);

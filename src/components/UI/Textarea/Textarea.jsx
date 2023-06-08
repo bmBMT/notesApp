@@ -1,8 +1,8 @@
-import React, { memo } from "react";
-import "./Textarea.module.css";
+import React, { forwardRef, memo } from "react";
+import "./Textarea.css";
 
-const Textarea = ({ ...props }) => {
-  return <textarea {...props} className="blur-bg" />;
-};
+const Textarea = forwardRef((props, ref) => {
+  return <textarea ref={ref} {...props} className="blur-bg" />;
+});
 
 export default memo(Textarea);
