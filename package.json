@@ -1,6 +1,6 @@
 {
-  "name": "notesapp-react-js",
-  "homepage": "https://bmBMT.github.io/notesApp-react-js/",
+  "name": "notesApp",
+  "homepage": "https://bmBMT.github.io/notesApp/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
